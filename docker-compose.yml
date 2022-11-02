@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    image: python:3.10-alpine
+    volumes:
+      - ./server:/server/
+    command: python /server/server.py
+    network_mode: host
+
+  robot:
+    depends_on:
+      - web
+    image: ppodgorsek/robot-framework
+    volumes:
+      - ./reports:/opt/robotframework/reports
+      - ./tests:/opt/robotframework/tests
+    network_mode: host
