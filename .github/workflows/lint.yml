@@ -1,14 +1,10 @@
 name: Sharre final
 on: [push]
 jobs:
-  sharre-finally:
+
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: pip install robotframework robotframework-browser
       - run: pip install robotframework-robocop
-      - run: rfbrowser init
       - run: robocop
